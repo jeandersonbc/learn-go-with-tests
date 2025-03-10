@@ -2,8 +2,13 @@ package main
 
 import "fmt"
 
+const englishGreeting = "Hello, "
+
 func Hello(s string) string {
-	return fmt.Sprintf("Hello, %v!", s)
+	if len(s) < 1 {
+		return englishGreeting + "World!"
+	}
+	return englishGreeting + s + "!"
 }
 
 func main() {
