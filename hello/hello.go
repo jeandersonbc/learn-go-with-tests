@@ -1,16 +1,32 @@
 package main
 
-import "fmt"
+const (
+	englishGreeting = "Hello, "
+	spanishGreeting = "Hola, "
+	frenchGreenting = "Bonjour, "
+)
 
-const englishGreeting = "Hello, "
-
-func Hello(s string) string {
-	if len(s) < 1 {
-		return englishGreeting + "World!"
-	}
-	return englishGreeting + s + "!"
+// A friendly hello
+func Hello(s, lang string) string {
+	name := validateName(s)
+	prefix := pickPrefix(lang)
+	return prefix + name + "!"
 }
 
-func main() {
-	fmt.Println(Hello("world"))
+func validateName(s string) string {
+	if len(s) == 0 {
+		return "World"
+	}
+	return s
+}
+
+func pickPrefix(lang string) (prefix string) {
+	prefix = englishGreeting
+	switch lang {
+	case "Spanish":
+		prefix = spanishGreeting
+	case "French":
+		prefix = frenchGreenting
+	}
+	return
 }
